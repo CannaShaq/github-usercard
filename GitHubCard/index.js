@@ -4,6 +4,11 @@
     https://api.github.com/users/<your name>
 */
 
+axios.get('https://api.github.com/users/cannashaq')
+.then(response => {
+  console.log(response);
+})
+
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
     github info! You will need to understand the structure of this
@@ -49,6 +54,42 @@ const followersArray = [];
       </div>
     </div>
 */
+
+function Card(obj){
+
+  const card = document.createElement('div');  //card
+  const imageURL = document.createElement('img'); 
+  const cardInf = document.createElement('div'); //card-info
+  const name = document.createElement('h3'); //name
+  const userName = document.createElement('p'); //username
+  const location = document.createElement('p'); 
+  const profile = document.createElement('p');
+  const profileLink = document.createElement('a');
+  const followers = document.createElement('p');
+  const following = document.createElement('p');
+  const bio = document.createElement('p');
+
+  card.classList.add('card');
+  cardInf.classList.add('card-info');
+  name.classList.add('name');
+  userName.classList.add('username');
+
+  card.append(imageURL, cardInf);
+  cardInf.append(name, userName, location, profile, followers, following, bio);
+  profile.appendChild(profileLink);
+
+  imageURL.src = obj.avatar_url;
+  name.textContent = obj.name;
+  userName.textContent = obj.login;
+  location.textContent = obj.location;
+  profile.textContent = "Profile: "
+  profileLink.textContent = obj.html_url;
+  followers.textContent = obj.followers;
+  following.textContent = obj.following;
+  bio.textContent = obj.bio;
+}
+
+
 
 /*
   List of LS Instructors Github username's:
